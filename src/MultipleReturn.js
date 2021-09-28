@@ -1,8 +1,53 @@
+import { useEffect, useState } from "react";
+
+const url = "https://api.github.com/users/QuincyLarson";
+
 const MultipleReturn = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [user, setUser] = useState("default user");
+
+  useEffect(() => {
+    fetch(url)
+      .then((resp) => {
+        if (resp.status >= 200 && resp.status <= 299) {
+          return resp.json();
+        } else {
+          setIsLoading(false);
+          setIsError(true);
+          throw new Error(resp.statusText);
+        }
+      })
+      .then((user) => {
+        const { login } = user;
+        setUser(login);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  //conditional returns
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div>
+        <h1>Error...</h1>
+      </div>
+    );
+  }
+
   return (
-    <>
-      <h3>Multiple Reutrn</h3>
-    </>
+    <div>
+      <h3>{user}</h3>
+    </div>
   );
 };
 
