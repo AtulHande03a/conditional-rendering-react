@@ -8,14 +8,14 @@ const ShortCircuitEvaluation = () => {
   //then text is false and thus returns 'john'
   //if default value is true then
   //text is shown
-  const firstValue = text || "John";
+  //const firstValue = text || "John";
 
   //when using && operator
   //when default value is false ie empty string
   //then first value ie text is displayed as
   // we need both text and second value ie Peter
   //to be true to show us 'Peter'
-  const secondValue = text && "Peter";
+  //const secondValue = text && "Peter";
 
   //when we use ! operator
   // we will get the second value as
@@ -24,15 +24,24 @@ const ShortCircuitEvaluation = () => {
 
   return (
     <>
+      {/*  <h1>{text || "John"}</h1>
       {/*<h1>{text || "John"}</h1>
       {text && <h1>Peter</h1>}
-      {!text && <h1>Peter</h1>}*/}
+      {!text && <h1>Peter</h1>} */}
       <h1>{text || "John"}</h1>
-      <button className="btn" onClick={setIsError(!isError)}>
-        toggle button
+      <button className="btn" onClick={() => setIsError(!isError)}>
+        Toggle Error
       </button>
-      {isError && <h1>error occured..</h1>}
-      {isError ? }
+      {isError && <h1>Error...</h1>}
+
+      {/*ternary operator */}
+      {isError ? (
+        <p>there is error..</p>
+      ) : (
+        <div>
+          <p>There is no error..</p>
+        </div>
+      )}
     </>
   );
 };
