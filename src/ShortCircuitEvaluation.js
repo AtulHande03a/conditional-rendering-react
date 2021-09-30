@@ -34,7 +34,7 @@ const ShortCircuitEvaluation = () => {
       </button>
       {isError && <h1>Error...</h1>}
 
-      {/*ternary operator */}
+      {/* using ternary operator to display elements conditionally in react */}
       {isError ? (
         <p>there is error..</p>
       ) : (
