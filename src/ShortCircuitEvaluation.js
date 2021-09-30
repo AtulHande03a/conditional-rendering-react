@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const ShortCircuitEvaluation = () => {
   const [text, setText] = useState("");
+  const [isError, setIsError] = useState(false);
   //when using or operator
   //if the default value is false,
   //then text is false and thus returns 'john'
@@ -23,9 +24,15 @@ const ShortCircuitEvaluation = () => {
 
   return (
     <>
-      <h1>{text || "John"}</h1>
+      {/*<h1>{text || "John"}</h1>
       {text && <h1>Peter</h1>}
-      {!text && <h1>Peter</h1>}
+      {!text && <h1>Peter</h1>}*/}
+      <h1>{text || "John"}</h1>
+      <button className="btn" onClick={setIsError(!isError)}>
+        toggle button
+      </button>
+      {isError && <h1>error occured..</h1>}
+      {isError ? }
     </>
   );
 };
